@@ -36,7 +36,7 @@ const Card_List = ({ data }) => {
                     Add
                   </Button>
                 </Group>
-              </Card>
+              </Card>    
             </Grid.Col>
           );
         })}
