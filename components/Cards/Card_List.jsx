@@ -5,41 +5,48 @@ const Card_List = ({ data }) => {
   return (
     <>
       <Grid>
-        {data.map((item) => {
-          return (
-            <Grid.Col key={item._id} span={{ base: 6, md: 6, lg: 3 }}>
-              <Card shadow="xs" padding="xs" radius="sm" withBorder>
-                <Card.Section>
-                  <Image
-                    src={item.image}
-                    height={160}
-                    fit="cover"
-                    alt="Norway"
-                  />
-                </Card.Section>
+        {data.map((item) => (
+          <Grid.Col key={item._id} span={{ base: 6, md: 6, lg: 3 }}>
+            <Card shadow="xs" padding="xs" radius="sm" withBorder>
+              <Card.Section>
+                <Image
+                  src={item.image}
+                  height={160}
+                  fit="cover"
+                  alt={item.name}
+                />
+              </Card.Section>
 
-                <Text fw={500} mt={"xs"}>
-                  {item.name}
-                </Text>
-                <Text fw={500} my={"5px"}>
-                  {item.price} {"so'm"}
-                </Text>
-                <Text size="sm" c="dimmed" lineClamp={1}>
-                  {item.description}
-                </Text>
+              <Text fw={500} mt="xs">
+                {item.name}
+              </Text>
+              <Text fw={500} my="5px">
+                {item.price} so'm
+              </Text>
 
-                <Group grow mt="sm" gap={"xs"}>
-                  <Button color="red" size="xs">
-                    Remove
-                  </Button>
-                  <Button color="blue" size="xs">
-                    Add
-                  </Button>
-                </Group>
-              </Card>    
-            </Grid.Col>
-          );
-        })}
+              <Text size="sm" c="dimmed" lineClamp={1}>
+                {item.description}
+              </Text>
+
+              <Group grow mt="sm" gap="xs">
+                <Button color="red" size="xs">
+                  Remove
+                </Button>
+
+                {/* ⭐️ Add button deep-link */}
+                <Button
+                  color="blue"
+                  size="xs"
+                  component="a"
+                  href={`https://t.me/NamanganMarketBot?start=product_${item._id}`}
+                  target="_blank"
+                >
+                  Add
+                </Button>
+              </Group>
+            </Card>
+          </Grid.Col>
+        ))}
       </Grid>
     </>
   );
